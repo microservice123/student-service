@@ -1,6 +1,6 @@
 spring:
   application:
-    name: faculty-service
+    name: student-service
 
   config:
     import: "optional:configserver:"
@@ -8,3 +8,10 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+
+resilience4j:
+  retry:
+    instances:
+      basic:
+        maxRetryAttemps: 5
+        waitDuration: 3s
