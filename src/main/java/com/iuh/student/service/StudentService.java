@@ -19,12 +19,17 @@ public class StudentService {
     @Autowired
     private RestTemplate restTemplate;
 
+
+
     public Student saveStudent(Student student){
         return studentRepository.save(student);
     }
 
 
-    @Retry(name = "basic")
+//    @Retry(name = "basic")
+//    @Retry(name = "intervalFunctionExponentialExample")
+//    @Retry(name = "intervalFunctionRandomExample")
+      @Retry(name = "loggedRetryExample")
     public ResponseTemplate getUserWithFaculties(Long studentId){
         ResponseTemplate responseTemplate = new ResponseTemplate();
         Student student = studentRepository.findById(studentId).get();
